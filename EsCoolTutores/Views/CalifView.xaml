@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EsCoolTutores.Views.CalifView"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#fef4eb">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="0,10,10,10"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+
+
+
+
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" ></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackLayout >
+
+            <Frame CornerRadius="20" Margin="20" BorderColor="Transparent" BackgroundColor="#e9eee7">
+                <Grid>
+
+                    <StackLayout>
+
+                        <Image Source="hijoo.png"></Image>
+                        <Label  HorizontalTextAlignment="Center"
+                                FontSize="Title" FontAttributes="Bold" CharacterSpacing="1"
+                                Margin="0" TextColor="#18605d" Text="{Binding Nombre}" ></Label>
+
+                        <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="CenterAndExpand">
+
+                            <Label FontSize="Title" TextColor="#18605d" Margin="0" Text="{Binding Grado}"></Label>
+                            <Label FontSize="Title" TextColor="#18605d" Margin="0" Text="{Binding Seccion}"></Label>
+                        </StackLayout>
+
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+
+        </StackLayout>
+
+        <!--Aqui empieza la parte de la calificaciones-->
+
+        <StackLayout Grid.Row="1">
+
+            <Label CharacterSpacing="3" FontFamily="Freshman" FontAttributes="Bold" FontSize="38"
+                   Margin="0,30,0,0">SCHOOL GRADES</Label>
+
+
+            <CollectionView  ItemsSource="{Binding ListaAlumnos}" >
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="5"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+                        
+                        <Frame BorderColor="Transparent" BackgroundColor="#bdcdb6" Margin="20"
+                                Padding="0" CornerRadius="30">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="260"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid >
+                                    
+                                    <HorizontalStackLayout>
+                                        <Image Margin="20,0,0,0" Source="calif.png" Grid.RowSpan="1"></Image>
+                            <Label Margin="5,0" FontSize="21"  CharacterSpacing="1" 
+                               Grid.RowSpan="1" TextColor="#18605d" Grid.Column="1" Text="{Binding NombreAsignatura}" ></Label>
+                                    </HorizontalStackLayout>
+                                </Grid>
+
+
+                                <StackLayout Grid.Column="1">
+                                    <Grid BackgroundColor="Wheat">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            
+                                        </Grid.ColumnDefinitions>
+
+                            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                                <Label FontAttributes="Bold" Margin="10,0" TextColor="#a1486d">UNIDAD</Label>
+                                <Label FontAttributes="Bold" TextColor="#a1486d" Text="{Binding Unidad}"></Label>
+                            </HorizontalStackLayout>
+
+
+
+                            <Label Margin="0,0,10,10"  FontSize="22"  Grid.Row="1" Text="{Binding Calificacion}"></Label>
+                                        
+
+                                    </Grid>
+                                </StackLayout>
+
+
+                            </Grid>
+
+                        </Frame>
+
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+        <Button Grid.Row="2" BackgroundColor="#fbc390" FontSize="18"
+                Text="◀ BACK" CharacterSpacing="2"  CornerRadius="20" TextColor="#a1486d" 
+                FontAttributes="Bold" WidthRequest="150" 
+                HeightRequest="60" Margin="0,0,0,50" Command="{Binding CaneclarCommand}"></Button>
+    </Grid>
+</ContentPage>

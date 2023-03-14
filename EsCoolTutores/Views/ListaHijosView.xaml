@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EsCoolTutores.Views.ListaHijosView"
+             xmlns:vm="clr-namespace:EsCoolTutores.ViewModels"
+             x:Name="list"
+             NavigationPage.HasNavigationBar="False"
+              BackgroundColor="#fef4eb"
+             >
+
+   
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+
+
+            <Setter Property="FontSize" Value="20 "></Setter>
+            <Setter Property="TextTransform" Value="Uppercase"></Setter>
+            <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="15,0,0,0"></Setter>
+            
+        </Style>
+
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" ></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Label CharacterSpacing="3" FontFamily="Freshman" FontAttributes="Bold" FontSize="38">Tutorados</Label>
+                <Image HorizontalOptions="EndAndExpand" Source="otrolog.png"></Image>
+
+
+
+            </StackLayout>
+
+            <!--Aqui empieza la parte de la calificaciones-->
+
+            <StackLayout Grid.Row="1">
+
+
+
+
+                <CollectionView  ItemsSource="{Binding ListaAlumnos}" >
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate >
+                        <DataTemplate>
+
+
+                            <Frame BackgroundColor="#d1dfdf" BorderColor="Transparent"
+                       Margin="50,0" CornerRadius="20">
+
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference list}}"
+                                                          CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+
+                                <HorizontalStackLayout>
+                                    <Image Source="hijoo.png" HeightRequest="40"></Image>
+                                    <Label TextColor="#18605d" FontAttributes="Bold" Text="{Binding Nombre}"></Label>
+                                    <Image Source="mas2.png" Margin="10,0,0,0"></Image>
+                                </HorizontalStackLayout>
+                            </Frame>
+
+
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+
+           
+            
+
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>

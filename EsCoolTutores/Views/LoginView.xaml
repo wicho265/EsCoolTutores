@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EsCoolTutores.Views.LoginView"
+             xmlns:vm="clr-namespace:EsCoolTutores.ViewModels"
+             BackgroundColor="#fef4eb"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel x:Name="vmLogin"></vm:LoginViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold"></Setter>
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="Title"></Setter>
+            <Setter Property="CharacterSpacing" Value="1"></Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout >
+
+
+
+
+        <Label TextColor="#91ab86" Margin="0,50,0,10" FontAttributes="Bold"
+               FontFamily="Freshman" FontSize="70">ES COOL</Label>
+
+        <Image  Source="otrolog.png" ></Image>
+
+
+        <Frame CornerRadius="20" Margin="50,0" Padding="0,30" BorderColor="Transparent">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Margin="0,0,0,20" >WELCOME</Label>
+
+                <HorizontalStackLayout Grid.Row="1" Margin="0,30,0,0" HorizontalOptions="Center">
+
+                    <Image Source="user.png"></Image>
+                    <Entry WidthRequest="220" FontSize="20" Text="{Binding NombreUsuario}"
+                   Placeholder="Enter your username" Margin="15,0,0,0"></Entry>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center"
+                               Margin="0,50,0,0">
+
+                    <Image Source="pass.png" ></Image>
+                    <Entry WidthRequest="220" FontSize="20" Text="{Binding Password}"
+                   Margin="15,0,0,0" Placeholder="Enter your password"></Entry>
+                </HorizontalStackLayout>
+            </Grid>
+        </Frame>
+
+
+
+        <Button BackgroundColor="#fbc390" FontSize="18"
+                Text="LOGIN" CharacterSpacing="2"  CornerRadius="20" TextColor="#a1486d" 
+                FontAttributes="Bold" WidthRequest="150" 
+                HeightRequest="60" Margin="0,10,0,0"  Command="{Binding IniciarSesionCommand}"></Button>
+
+    </StackLayout>
+
+</ContentPage>
